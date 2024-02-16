@@ -1,0 +1,657 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.theme-default {
+  --color-primary: 80 159 214;
+  --color-secondary: 244 251 255;
+  /* ... */
+}
+
+.theme-night {
+  --color-primary: 2 82 204;
+  --color-secondary: 255 196 2;
+  /* ... */
+}
+
+.theme-tailwind {
+  --color-primary: 192 178 131;
+  --color-secondary: 220 208 192;
+  /* ... */
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--background);
+}
+
+.overlay,
+.confirm-dialog {
+  z-index: 9998 !important;
+}
+
+.confirm-button {
+  background-color: #FF4000 !important;
+}
+
+.confirm-button:hover {
+  background-color: rgb(2, 132, 199) !important;
+}
+
+.cancel-button {
+  color: rgb(239, 68, 68) !important;
+}
+
+.cancel-button:hover {
+  color: rgb(220, 38, 38) !important;
+}
+
+._toastContainer {
+  z-index: 9999 !important;
+}
+
+.default-tip {
+  white-space: normal !important;
+  width: max-content !important;
+  max-width: 300px !important;
+  background-color: rgb(14, 165, 233) !important;
+}
+
+.markdown-viewer h1,
+.markdown-viewer h2,
+.markdown-viewer h3 {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  margin: 0 !important;
+}
+
+.markdown-viewer a {
+  color: #FF4000 !important;
+}
+
+.markdown-viewer ul {
+  margin-left: 1.5rem;
+  list-style: disc;
+}
+
+.markdown-viewer ol {
+  margin-left: 1.5rem;
+  list-style: numeric;
+}
+
+.markdown-viewer .link:hover,
+.markdown-viewer a:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.markdown-viewer blockquote {
+  padding-left: 1.5em;
+  line-height: 1.75em;
+  border-left: 4px solid rgb(59, 130, 246);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.markdown-viewer h1,
+.markdown-viewer h2,
+.markdown-viewer h3 {
+  margin: 10px 0 !important;
+  font-weight: 400;
+}
+
+.confirm-dialog {
+  top: 50vh !important;
+}
+
+.tooltip {
+  z-index: 999 !important;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ECEFF3;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ECEFF3;
+}
+
+select {
+  -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7A8398;
+  border-radius: 20px;
+  border: 3px solid #ECEFF3;
+}
+
+.markdown-view > p:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.milkdown-menu {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  border-top-right-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+
+emoji-picker {
+  display: var(--emojiPickerDisplay);
+  --background: var(--emojiPickerBackgroundColor) !important;
+  --button-hover-background: var(--emojiPickerButtonHover) !important;
+  --button-active-background: var(--emojiPickerButtonHover) !important;
+  border-radius: 16px !important;
+  --border-color: var(--emojiPickerBorderColor) !important;
+  --indicator-color: #FF4000;
+  --input-border-radius: 6px;
+  --input-line-height: 20px;
+  --input-border-color: var(--emojiPickerInputBorderColor) !important;
+  --input-font-size: 14px;
+  --input-font-color: var(--emojiPickerInputFontColor) !important;
+}
+
+.tooltip-input {
+  background: var(--emojiPickerBackgroundColor) !important;
+}
+
+.tooltip-input > button {
+  color: var(--emojiPickerInputFontColor) !important;
+  border-radius: 6px;
+}
+
+.tooltip-input > button:hover {
+  background: var(--emojiPickerButtonHover) !important;
+}
+
+.milkdown .editor .list-item_label {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: inherit !important;
+  height: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: currentColor !important;
+  margin-left: 0.2rem !important;
+  margin-right: 0.2rem !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+.milkdown .editor ol > li .list-item_label {
+  color: blue !important;
+  display: none !important;
+  margin: 0 !important;
+}
+
+.markdown-view ol {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.markdown-view ol > li {
+  list-style: none !important;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* .milkdown .editor blockquote {
+	padding-left: 0 !important;
+	line-height: normal !important;
+	border-left: none !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+} */
+.milkdown .editor {
+  border: none !important;
+  background: var(--background) !important;
+  padding: 0 !important;
+  padding-left: 1em !important;
+  word-break: break-word !important;
+}
+
+.emoji-wrapper {
+  display: inline-block;
+}
+
+.milkdown img {
+  max-width: 66.6666% !important;
+}
+
+.milkdown h1,
+.milkdown h2,
+.milkdown h3,
+.milkdown h4,
+.milkdown h5,
+.milkdown h6 {
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  margin: 0 !important;
+}
+
+.milkdown iframe {
+  width: 100% !important;
+  height: 390px !important;
+  border: none !important;
+}
+
+@media (max-width: 768px) {
+  .milkdown iframe {
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+  }
+}
+.milkdown a {
+  color: rgb(2, 132, 199) !important;
+}
+
+.milkdown .editor .link:hover,
+.milkdown .editor a:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.milkdown .editor .heading {
+  margin: 10px 0 !important;
+  font-weight: 400;
+}
+
+.milkdown-menu button {
+  background: transparent !important;
+}
+
+.milkdown {
+  border-radius: 18px !important;
+  position: relative !important;
+}
+
+.milkdown .editor {
+  border: 1px solid var(--borderColor);
+  border-bottom-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.ProseMirror {
+  border-radius: 18px !important;
+}
+
+.milkdown .editor > * {
+  margin: 0.5em 0 !important;
+}
+
+.icon {
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+.shepherd-button {
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.5s ease;
+}
+
+.shepherd-button.shepherd-button-secondary {
+  background: #f1f2f3;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.shepherd-button.shepherd-button-secondary:not(:disabled):hover {
+  background: #d6d9db;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.shepherd-button:disabled {
+  cursor: not-allowed;
+}
+
+.shepherd-footer {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 0.75rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shepherd-button:last-child {
+  margin-right: 0;
+}
+
+.shepherd-progress {
+  font-size: 0.8rem;
+}
+
+.shepherd-dot {
+  display: inline-block;
+  height: 10px; /* Adjust size as needed */
+  width: 10px; /* Adjust size as needed */
+  border: 2px solid #FF4000; /* Adjust color as needed */
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 5px; /* Adjust spacing as needed */
+}
+
+.shepherd-dot.active {
+  background-color: #FF4000; /* Adjust color as needed */
+}
+
+.shepherd-footer .shepherd-button:last-child {
+  margin-right: 0;
+}
+
+.shepherd-cancel-icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  transition: color 0.5s ease;
+}
+
+.shepherd-cancel-icon:hover {
+  color: rgb(255, 0, 0);
+}
+
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon {
+  color: #fff;
+}
+
+.shepherd-has-title .shepherd-content .shepherd-cancel-icon:hover {
+  color: rgb(255, 0, 0);
+}
+
+.shepherd-title {
+  color: #fff;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.shepherd-header {
+  align-items: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 2em;
+  padding: 0.75rem 0.75rem 0;
+}
+
+.shepherd-has-title .shepherd-content .shepherd-header {
+  background: #FF4000;
+  text-align: center;
+  font-size: 24px;
+  padding: 0.5em;
+}
+
+.shepherd-text {
+  font-size: 1rem;
+  line-height: 1.3em;
+  padding: 15px;
+}
+
+.shepherd-text p {
+  margin-top: 0;
+}
+
+.shepherd-text p:last-child {
+  margin-bottom: 0;
+}
+
+.shepherd-content {
+  border-radius: 5px;
+  outline: none;
+  padding: 0;
+}
+
+.shepherd-element {
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  max-width: 450px;
+  opacity: 0;
+  outline: none;
+  transition: opacity 0.3s, visibility 0.3s;
+  visibility: hidden;
+  width: 100%;
+  z-index: 9999;
+}
+
+@media screen and (min-width: 1024px) {
+  .shepherd-element {
+    max-width: 402px;
+  }
+}
+.shepherd-enabled.shepherd-element {
+  opacity: 1;
+  visibility: visible;
+}
+
+.shepherd-element[data-popper-reference-hidden]:not(.shepherd-centered) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.shepherd-element, .shepherd-element *, .shepherd-element :after, .shepherd-element :before {
+  box-sizing: border-box;
+}
+
+.shepherd-element[data-popper-placement^=top] {
+  margin-bottom: 30px;
+}
+
+.shepherd-element[data-popper-placement^=bottom] {
+  margin-top: 25px;
+}
+
+.shepherd-element[data-popper-placement^=left] {
+  margin-left: -20px;
+}
+
+.shepherd-element[data-popper-placement^=right] {
+  margin-left: 25px;
+}
+
+.shepherd-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: -1;
+}
+
+.shepherd-arrow:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+
+.shepherd-element[data-popper-placement^=bottom] > .shepherd-arrow {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid var(--shepherd-target-border-color, black);
+  transform: translateY(50%);
+  top: -30px;
+}
+
+.shepherd-element[data-popper-placement^=left] > .shepherd-arrow {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid var(--shepherd-target-border-color, black);
+  transform: translateX(-50%);
+  right: -23px;
+}
+
+.shepherd-element[data-popper-placement^=right] > .shepherd-arrow {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 15px solid var(--shepherd-target-border-color, black);
+  transform: translateX(50%);
+  left: -23px;
+}
+
+.shepherd-element[data-popper-placement^=top] > .shepherd-arrow {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid var(--shepherd-target-border-color, black);
+  transform: translateY(-50%);
+  bottom: -20px;
+}
+
+.shepherd-element.shepherd-centered > .shepherd-arrow {
+  opacity: 0;
+}
+
+.shepherd-element .shepherd-arrow {
+  border-width: 0;
+  height: auto;
+  width: auto;
+}
+
+.shepherd-target {
+  position: relative;
+}
+
+.shepherd-target::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border: 3px solid var(--shepherd-target-border-color, black);
+  border-radius: 5px;
+  z-index: 9999; /* Adjust this value based on your z-index requirements */
+  pointer-events: none; /* Prevents the pseudo-element from blocking clicks */
+}
+
+.shepherd-element.shepherd-has-title[data-popper-placement^=bottom] > .shepherd-arrow:before {
+  border-color: #e6e6e6;
+}
+
+.shepherd-target-click-disabled.shepherd-enabled.shepherd-target, .shepherd-target-click-disabled.shepherd-enabled.shepherd-target * {
+  pointer-events: none;
+}
+
+.shepherd-modal-overlay-container {
+  height: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  transition: all 0.3s ease-out, height 0ms 0.3s, opacity 0.3s 0ms;
+  width: 100vw;
+  z-index: 9997;
+}
+
+.shepherd-modal-overlay-container.shepherd-modal-is-visible {
+  height: 100vh;
+  /*opacity: var(--shepherdOverlayOpacity);*/
+  transform: translateZ(0);
+  transition: all 0.3s ease-out, height 0s 0s, opacity 0.3s 0s;
+}
+
+.shepherd-modal-overlay-container.shepherd-modal-is-visible path {
+  pointer-events: all;
+}
+
+.kaira-cdn-image-container {
+  position: relative;
+}
+
+.kaira-cdn-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Customize this as you need for your loading spinner */
+}
+
+.kaira-cdn-loaded {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.kaira-cdn-loading {
+  opacity: 0;
+}
+
+/* hide scrollbar but keep the functionality */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE ve Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.vjs-kaira.video-js .vjs-control-bar {
+  background-color: transparent !important;
+}
+
+.vjs-kaira.video-js {
+  color: #FF4000 !important;
+}
+
+/* Change the border of the big play button. */
+.vjs-kaira .vjs-big-play-button {
+  border-color: #FF4000 !important;
+  background: #FF4000 !important;
+  color: white;
+}
+
+/* Change the color of various "bars". */
+.vjs-kaira .vjs-volume-level,
+.vjs-kaira .vjs-play-progress,
+.vjs-kaira .vjs-slider-bar {
+  background: #FF4000 !important;
+}
+
+.vjs-kaira-audio .vjs-play-control {
+  display: none !important;
+}

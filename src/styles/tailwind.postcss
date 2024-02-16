@@ -1,0 +1,21 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+::selection {
+	background-color: rgb(14 165 233);
+	color: #fefefe;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+textarea:focus,
+input:focus {
+	outline: none;
+}
+
+._toastContainer {
+	z-index: 9999 !important;
+}
