@@ -8,17 +8,17 @@ import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 
 const __dirname = dirname(fileURLToPath(import.meta.url)); // jshint ignore:line
 
-const navigateFallbackDenyList = [
-  // prettier-ignore
-  new RegExp("/^\/[^\/]+\/?$/") /* eslint-disable-line */,
-  // prettier-ignore
-  new RegExp("/^\/[^\/]+\/posts\/[^\/]+\/?$/") /* eslint-disable-line */,
-  // prettier-ignore
-  new RegExp("/^\/profile\/[^\/]+\/?$/") /* eslint-disable-line */,
-  // prettier-ignore
-  new RegExp("/^\/posts\/[^\/]+\/?$/") /* eslint-disable-line */,
-  // prettier-ignore
-  new RegExp("/^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
+const prerenderedPages = [
+  "/settings",
+  "/explore",
+  "/",
+  "/notifications",
+  "/settings",
+  "/error",
+  "/mint",
+  "/monetize",
+  "/about",
+  "/feed",
 ];
 
 export default defineConfig({
@@ -67,125 +67,14 @@ export default defineConfig({
         theme_color: "#FFFFFF",
       },
       workbox: {
-        navigateFallbackDenylist: navigateFallbackDenyList,
+        // prettier-ignore
+        navigateFallbackDenylist: [new RegExp("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/")] /* eslint-disable-line */,
         globPatterns: ["client/**/*.{js,css,png}"],
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>
               // prettier-ignore
-              sameOrigin && url.pathname.match("/^\/[^\/]+\/?$/") /* eslint-disable-line */,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "ssr-pages-cache",
-              /* cache only 200 responses */
-              cacheableResponse: {
-                statuses: [200],
-              },
-              /* check the options in the workbox-build docs*/
-              matchOptions: {
-                ignoreVary: true,
-                ignoreSearch: true,
-              },
-              plugins: [
-                {
-                  /* this callback will be called when the fetch call fails */
-                  handlerDidError: async () =>
-                    Response.redirect("/error?offline", 302),
-                  /* this callback will prevent caching the response */
-                  cacheWillUpdate: async ({ response }) =>
-                    response.status === 200 ? response : null,
-                },
-              ],
-            },
-          },
-          {
-            urlPattern: ({ url, sameOrigin }) =>
-              // prettier-ignore
-              sameOrigin && url.pathname.match("/^\/[^\/]+\/posts\/[^\/]+\/?$/") /* eslint-disable-line */,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "ssr-pages-cache",
-              /* cache only 200 responses */
-              cacheableResponse: {
-                statuses: [200],
-              },
-              /* check the options in the workbox-build docs*/
-              matchOptions: {
-                ignoreVary: true,
-                ignoreSearch: true,
-              },
-              plugins: [
-                {
-                  /* this callback will be called when the fetch call fails */
-                  handlerDidError: async () =>
-                    Response.redirect("/error?offline", 302),
-                  /* this callback will prevent caching the response */
-                  cacheWillUpdate: async ({ response }) =>
-                    response.status === 200 ? response : null,
-                },
-              ],
-            },
-          },
-          {
-            urlPattern: ({ url, sameOrigin }) =>
-              // prettier-ignore
-              sameOrigin && url.pathname.match("/^\/profile\/[^\/]+\/?$/") /* eslint-disable-line */,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "ssr-pages-cache",
-              /* cache only 200 responses */
-              cacheableResponse: {
-                statuses: [200],
-              },
-              /* check the options in the workbox-build docs*/
-              matchOptions: {
-                ignoreVary: true,
-                ignoreSearch: true,
-              },
-              plugins: [
-                {
-                  /* this callback will be called when the fetch call fails */
-                  handlerDidError: async () =>
-                    Response.redirect("/error?offline", 302),
-                  /* this callback will prevent caching the response */
-                  cacheWillUpdate: async ({ response }) =>
-                    response.status === 200 ? response : null,
-                },
-              ],
-            },
-          },
-          {
-            urlPattern: ({ url, sameOrigin }) =>
-              // prettier-ignore
-              sameOrigin && url.pathname.match("/^\/posts\/[^\/]+\/?$/") /* eslint-disable-line */,
-            handler: "NetworkFirst",
-            options: {
-              cacheName: "ssr-pages-cache",
-              /* cache only 200 responses */
-              cacheableResponse: {
-                statuses: [200],
-              },
-              /* check the options in the workbox-build docs*/
-              matchOptions: {
-                ignoreVary: true,
-                ignoreSearch: true,
-              },
-              plugins: [
-                {
-                  /* this callback will be called when the fetch call fails */
-                  handlerDidError: async () =>
-                    Response.redirect("/error?offline", 302),
-                  /* this callback will prevent caching the response */
-                  cacheWillUpdate: async ({ response }) =>
-                    response.status === 200 ? response : null,
-                },
-              ],
-            },
-          },
-          {
-            urlPattern: ({ url, sameOrigin }) =>
-              // prettier-ignore
-              sameOrigin && url.pathname.match("/^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
+              sameOrigin && !prerenderedPages.includes(url.pathname.toLowerCase()) && url.pathname.match("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
             handler: "NetworkFirst",
             options: {
               cacheName: "ssr-pages-cache",
