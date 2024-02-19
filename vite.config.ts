@@ -30,7 +30,6 @@ export default defineConfig({
       base: "/",
       registerType: "autoUpdate",
       strategies: "generateSW",
-      includeAssets: ["favicon.png", "robots.txt", "apple-touch-icon.png"],
       manifest: {
         name: "PWA Reproduction",
         short_name: "PWA",
