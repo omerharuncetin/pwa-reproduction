@@ -25,8 +25,7 @@ export default defineConfig({
   plugins: [
     sveltekit(),
     SvelteKitPWA({
-      mode:
-        process.env.NODE_ENV === "development" ? "development" : "production",
+      mode: "development",
       scope: "/",
       base: "/",
       registerType: "autoUpdate",
@@ -69,6 +68,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallbackDenylist: navigateFallbackDenyList,
+        globPatterns: ["client/**/*.{js,css,png}"],
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>
