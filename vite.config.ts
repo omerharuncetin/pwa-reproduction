@@ -8,19 +8,6 @@ import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 
 const __dirname = dirname(fileURLToPath(import.meta.url)); // jshint ignore:line
 
-const prerenderedPages = [
-  "/settings",
-  "/explore",
-  "/",
-  "/notifications",
-  "/settings",
-  "/error",
-  "/mint",
-  "/monetize",
-  "/about",
-  "/feed",
-];
-
 export default defineConfig({
   plugins: [
     sveltekit(),
@@ -66,25 +53,33 @@ export default defineConfig({
         theme_color: "#FFFFFF",
       },
       workbox: {
-        // prettier-ignore
-        navigateFallbackDenylist: [new RegExp("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/")] /* eslint-disable-line */,
+        navigateFallbackDenylist: [
+          new RegExp(
+            "/^/[^/]+/?$|^/[^/]+/posts/[^/]+/?$|^/profile/[^/]+/?$|^/posts/[^/]+/?$|^/topics/[^/]+/?$/"
+          ),
+        ],
         globPatterns: ["client/**/*.{js,css,png}"],
         runtimeCaching: [
           {
             urlPattern: ({ url, sameOrigin }) =>
-              // prettier-ignore
-              sameOrigin && ![
-				"/settings",
-				"/explore",
-				"/",
-				"/notifications",
-				"/settings",
-				"/error",
-				"/mint",
-				"/monetize",
-				"/about",
-				"/feed",
-			  ].includes(url.pathname.toLowerCase()) && url.pathname.match("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
+              sameOrigin &&
+              ![
+                "/settings",
+                "/explore",
+                "/",
+                "/notifications",
+                "/settings",
+                "/error",
+                "/mint",
+                "/monetize",
+                "/about",
+                "/feed",
+              ].includes(url.pathname.toLowerCase()) &&
+              url.pathname.match(
+                new RegExp(
+                  "/^/[^/]+/?$|^/[^/]+/posts/[^/]+/?$|^/profile/[^/]+/?$|^/posts/[^/]+/?$|^/topics/[^/]+/?$/"
+                )
+              ),
             handler: "NetworkFirst",
             options: {
               cacheName: "ssr-pages-cache",
