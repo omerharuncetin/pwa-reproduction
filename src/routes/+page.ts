@@ -5,7 +5,9 @@ export const csr = true;
 export const prerender = true;
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ fetch }): Promise<PageReturnType> {
+export async function load({ params, url }): Promise<PageReturnType> {
+  console.log("home", { params, url });
+
   return {
     data: "ok",
   };

@@ -6,6 +6,7 @@ export const csr = true;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }): Promise<PageReturnType> {
+  console.log("slug/posts/id", { params });
   return {
     data: "ok",
   };

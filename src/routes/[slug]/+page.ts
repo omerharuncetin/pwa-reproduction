@@ -6,6 +6,7 @@ export const csr = true;
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, url }): Promise<PageReturnType> {
+  console.log("slug", { params, url });
   return {
     data: "okay",
   };
