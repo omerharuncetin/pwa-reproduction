@@ -74,7 +74,18 @@ export default defineConfig({
           {
             urlPattern: ({ url, sameOrigin }) =>
               // prettier-ignore
-              sameOrigin && !prerenderedPages.includes(url.pathname.toLowerCase()) && url.pathname.match("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
+              sameOrigin && ![
+				"/settings",
+				"/explore",
+				"/",
+				"/notifications",
+				"/settings",
+				"/error",
+				"/mint",
+				"/monetize",
+				"/about",
+				"/feed",
+			  ].includes(url.pathname.toLowerCase()) && url.pathname.match("/^\/[^\/]+\/?$|^\/[^\/]+\/posts\/[^\/]+\/?$|^\/profile\/[^\/]+\/?$|^\/posts\/[^\/]+\/?$|^\/topics\/[^\/]+\/?$/") /* eslint-disable-line */,
             handler: "NetworkFirst",
             options: {
               cacheName: "ssr-pages-cache",
