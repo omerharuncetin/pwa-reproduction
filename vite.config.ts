@@ -80,7 +80,7 @@ export default defineConfig({
                   "/^/[^/]+/?$|^/[^/]+/posts/[^/]+/?$|^/profile/[^/]+/?$|^/posts/[^/]+/?$|^/topics/[^/]+/?$/"
                 )
               ),
-            handler: "NetworkFirst",
+            handler: "NetworkOnly",
             options: {
               cacheName: "ssr-pages-cache",
               /* cache only 200 responses */
@@ -98,8 +98,7 @@ export default defineConfig({
                   handlerDidError: async () =>
                     Response.redirect("/error?offline", 302),
                   /* this callback will prevent caching the response */
-                  cacheWillUpdate: async ({ response }) =>
-                    response.status === 200 ? response : null,
+                  cacheWillUpdate: async () => null,
                 },
               ],
             },
