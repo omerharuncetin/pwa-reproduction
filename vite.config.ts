@@ -76,9 +76,7 @@ export default defineConfig({
                 "/feed",
               ].includes(url.pathname.toLowerCase()) &&
               url.pathname.match(
-                new RegExp(
-                  "/^/[^/]+/?$|^/[^/]+/posts/[^/]+/?$|^/profile/[^/]+/?$|^/posts/[^/]+/?$|^/topics/[^/]+/?$/"
-                )
+                /^\/(?:[^\/]+\/?(?:posts\/)?[^\/]+\/?|profile\/[^\/]+\/?|posts\/[^\/]+\/?|topics\/[^\/]+\/?|)$/
               ),
             handler: "NetworkOnly",
             options: {
