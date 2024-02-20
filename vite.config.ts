@@ -76,7 +76,7 @@ export default defineConfig({
               /^\/(?:[^\/]+\/?(?:posts\/)?[^\/]+\/?|profile\/[^\/]+\/?|posts\/[^\/]+\/?|topics\/[^\/]+\/?|)$/.test(
                 url.pathname
               ),
-            handler: "NetworkOnly",
+            handler: "NetworkFirst",
             options: {
               cacheName: "ssr-pages-cache",
               /* cache only 200 responses */
