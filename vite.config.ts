@@ -93,8 +93,9 @@ export default defineConfig({
                   /* this callback will be called when the fetch call fails */
                   handlerDidError: async () =>
                     Response.redirect("/error?offline", 302),
-                  /* this callback will prevent caching the response */
-                  cacheWillUpdate: async () => null,
+                  /* this callback will prevent caching the response when not 200 */
+                  cacheWillUpdate: async ({ response }) =>
+                    response.status === 200 ? response : null,
                 },
               ],
             },
