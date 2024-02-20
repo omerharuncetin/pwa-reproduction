@@ -54,9 +54,7 @@ export default defineConfig({
       },
       workbox: {
         navigateFallbackDenylist: [
-          new RegExp(
-            "/^/[^/]+/?$|^/[^/]+/posts/[^/]+/?$|^/profile/[^/]+/?$|^/posts/[^/]+/?$|^/topics/[^/]+/?$/"
-          ),
+          /^\/(?:[^\/]+\/?(?:posts\/)?[^\/]+\/?|profile\/[^\/]+\/?|posts\/[^\/]+\/?|topics\/[^\/]+\/?|)$/,
         ],
         globPatterns: ["client/**/*.{js,css,png}"],
         runtimeCaching: [
