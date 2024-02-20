@@ -74,9 +74,9 @@ export default defineConfig({
                 "/monetize",
                 "/about",
                 "/feed",
-              ].includes(url.pathname.toLowerCase()) &&
-              url.pathname.match(
-                /^\/(?:[^\/]+\/?(?:posts\/)?[^\/]+\/?|profile\/[^\/]+\/?|posts\/[^\/]+\/?|topics\/[^\/]+\/?|)$/
+              ].includes(url.pathname) &&
+              /^\/(?:[^\/]+\/?(?:posts\/)?[^\/]+\/?|profile\/[^\/]+\/?|posts\/[^\/]+\/?|topics\/[^\/]+\/?|)$/.test(
+                url.pathname
               ),
             handler: "NetworkOnly",
             options: {
